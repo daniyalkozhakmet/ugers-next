@@ -236,13 +236,13 @@ const GET = async (req: NextRequest, res: NextApiResponse) => {
               neighborhood = "Алмалинский";
               break;
             case "AUEZ":
-              neighborhood = "Ауэзовcкий";
+              neighborhood = "Ауэзовский";
               break;
             case "BOSTNDYK":
               neighborhood = "Бостандыкский";
               break;
             case "ZHETISU":
-              neighborhood = "Жетыcуский";
+              neighborhood = "Жетысуский";
               break;
             case "MEDEU":
               neighborhood = "Медеуский";
