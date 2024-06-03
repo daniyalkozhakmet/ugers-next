@@ -27,11 +27,9 @@ export default function RootLayout({
       </Head>
       <StoreProvider>
         <Provider>
-          <body className="custom-container">
-            <ImportBsJS />
-            <Navbar />
-            {children}
-          </body>
+          <ImportBsJS />
+          <Navbar />
+          <body className="custom-container">{children}</body>
         </Provider>
       </StoreProvider>
     </html>
