@@ -3,6 +3,8 @@ import User, { UserRole } from "@/app/models/User";
 
 const GET = async () => {
   try {
+    console.log("Connecting");
+
     await connect();
     const userData = await User.find({ role: UserRole.USER }).populate("res");
 
