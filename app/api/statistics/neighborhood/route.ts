@@ -24,9 +24,9 @@ const GET = async () => {
     const neighborhoods = [
       "Алатауский",
       "Алмалинский",
-      "Ауэзовский",
+      "Ауэзовcкий",
       "Бостандыкский",
-      "Жетысуский",
+      "Жетыcуский",
       "Медеуский",
       "Наурызбайский",
       "Турксибский",
@@ -58,7 +58,6 @@ const GET = async () => {
         statistics.statistics.total.totalLeft += leftCount;
         statistics.statistics.total.totalDone += doneCount;
       }
-  
 
       return Response.json({
         data: {
@@ -105,10 +104,10 @@ const GET = async () => {
       });
     }
     return Response.json({
-        error: {
-          message: "Internal Server Error",
-        },
-      });
+      error: {
+        message: "Internal Server Error",
+      },
+    });
   } catch (err: any) {
     return Response.json({
       error: {
