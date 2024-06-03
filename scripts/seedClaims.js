@@ -17,7 +17,6 @@ const seedClaims = async (data) => {
       {}
     );
     // Remove existing data (optional)
-    await Claim.deleteMany({});
 
     // Insert new data
     await Claim.insertMany(data);

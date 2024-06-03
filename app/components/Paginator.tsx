@@ -40,18 +40,24 @@ export const Paginator = ({
       <ul className="pagination justify-content-center">
         {pageNumber > 1 && (
           <li className="page-item" onClick={() => pageClick(pageNumber - 1)}>
-            <span className="page-link">Предыдущий</span>
+            <span className="page-link" style={{ cursor: "pointer" }}>
+              Предыдущий
+            </span>
           </li>
         )}
 
         {startPage > 1 && (
           <>
             <li className="page-item" onClick={() => pageClick(1)}>
-              <span className="page-link">1</span>
+              <span className="page-link" style={{ cursor: "pointer" }}>
+                1
+              </span>
             </li>
             {startPage > 2 && (
               <li className="page-item disabled">
-                <span className="page-link">...</span>
+                <span className="page-link" style={{ cursor: "pointer" }}>
+                  ...
+                </span>
               </li>
             )}
           </>
@@ -63,7 +69,9 @@ export const Paginator = ({
             key={page}
             onClick={() => pageClick(page)}
           >
-            <span className="page-link">{page}</span>
+            <span className="page-link" style={{ cursor: "pointer" }}>
+              {page}
+            </span>
           </li>
         ))}
 
@@ -71,18 +79,24 @@ export const Paginator = ({
           <>
             {endPage < totalPages - 1 && (
               <li className="page-item disabled">
-                <span className="page-link">...</span>
+                <span className="page-link" style={{ cursor: "pointer" }}>
+                  ...
+                </span>
               </li>
             )}
             <li className="page-item" onClick={() => pageClick(totalPages)}>
-              <span className="page-link">{totalPages}</span>
+              <span className="page-link" style={{ cursor: "pointer" }}>
+                {totalPages}
+              </span>
             </li>
           </>
         )}
 
         {pageNumber < totalPages && (
           <li className="page-item" onClick={() => pageClick(pageNumber + 1)}>
-            <span className="page-link">Cледующий</span>
+            <span className="page-link" style={{ cursor: "pointer" }}>
+              Cледующий
+            </span>
           </li>
         )}
       </ul>
