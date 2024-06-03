@@ -236,7 +236,7 @@ const GET = async (req: NextRequest, res: NextApiResponse) => {
               neighborhood = "Алмалинский";
               break;
             case "AUEZ":
-              neighborhood = "Ауезовский";
+              neighborhood = "Ауэзовский";
               break;
             case "BOSTNDYK":
               neighborhood = "Бостандыкский";

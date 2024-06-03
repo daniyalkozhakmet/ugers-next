@@ -43,7 +43,7 @@ export const SearchClaimsByNeighborhood = () => {
               <option value="">Выберите</option>
               <option value="ALATAU">Алатауский</option>
               <option value="ALMALY">Алмалинский</option>
-              <option value="AUEZ">Ауезовский</option>
+              <option value="AUEZ">Ауэзовский</option>
               <option value="BOSTNDYK">Бостандыкский</option>
               <option value="ZHETISU">Жетысуский</option>
               <option value="MEDEU">Медеуский</option>
