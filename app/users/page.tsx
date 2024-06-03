@@ -5,10 +5,9 @@ import { UsersGetResponse } from "@/lib/ts/user";
 import UsersTable from "../components/users/UsersTable";
 import { revalidateTag } from "next/cache";
 import ProtectedAdmin from "../components/secure/ProtectedAdmin";
+import { GET } from "../api/users/route";
 export default async function Page() {
-
-
-  const data = await fetchUsers();
+  const data = await GET();
   const users: UsersGetResponse = await data.json();
   return (
     <ProtectedAdmin>
