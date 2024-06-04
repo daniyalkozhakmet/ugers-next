@@ -55,7 +55,7 @@ const POST = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const GET = async (req: NextRequest, res: NextApiResponse) => {
   try {
-    const PAGE_SIZE = 10;
+    const PAGE_SIZE = 20;
     const pageNumber = Number(req.nextUrl.searchParams.get("page")) || 1;
     let totalCount = 0;
     let totalPages = 0;

@@ -129,7 +129,7 @@ export const ClaimsTable = ({
                   <tr key={index}>
                     <th scope="row">
                       {pagination.pageNumber > 1
-                        ? (pagination.pageNumber - 1) * 10 + index + 1
+                        ? (pagination.pageNumber - 1) * 20 + index + 1
                         : index + 1}
                     </th>
                     <th>{claim.invent_num}</th>

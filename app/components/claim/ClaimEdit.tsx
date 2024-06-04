@@ -271,6 +271,7 @@ export const ClaimEdit = ({ claim: claimDb }: ClaimGetByIdSuccess) => {
         dispatch(loading());
         const formData1 = convertClaimTypeToFormData(claim);
         formData1.append("res_id", claimDb.res._id);
+        formData1.append("_id", claimDb._id);
         const { data } = await updateClaim({
           text: {
             claim_id: claim._id,

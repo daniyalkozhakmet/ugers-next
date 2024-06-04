@@ -97,62 +97,59 @@ const PUT = async (req: NextRequest, res: NextResponse) => {
     const files = await req.formData();
     let data = Object.fromEntries(files.entries());
 
-
     if (session?.user.role == "user" && data.res_id == session.user.res) {
       await connect();
+
       const claimDb = await Claim.findById(data._id);
 
       data = {
         ...data,
         image1:
-          data.image1 instanceof File && claimDb.image1 != ""
+          typeof data.image1 != "string" && claimDb.image1 != ""
             ? await replaceImage(claimDb.image1, data.image1, "image1")
-            : data.image1 instanceof File && claimDb.image1 == ""
+            : data.image1 != "string" && claimDb.image1 == ""
             ? await uploadFile(data.image1, "image1")
             : data.image1,
         image2:
-          data.image2 instanceof File && claimDb.image2 != ""
+          typeof data.image2 != "string" && claimDb.image2 != ""
             ? await replaceImage(claimDb.image2, data.image2, "image2")
-            : data.image2 instanceof File && claimDb.image2 == ""
+            : typeof data.image2 != "string" && claimDb.image2 == ""
             ? await uploadFile(data.image2, "image2")
             : data.image2,
         image3:
-          data.image3 instanceof File && claimDb.image3 != ""
+          typeof data.image3 != "string" && claimDb.image3 != ""
             ? await replaceImage(claimDb.image3, data.image3, "image3")
-            : data.image3 instanceof File && claimDb.image3 == ""
+            : typeof data.image3 != "string" && claimDb.image3 == ""
             ? await uploadFile(data.image3, "image3")
             : data.image3,
         image4:
-          data.image4 instanceof File && claimDb.image4 != ""
+          typeof data.image4 != "string" && claimDb.image4 != ""
             ? await replaceImage(claimDb.image4, data.image4, "image4")
-            : data.image4 instanceof File && claimDb.image4 == ""
+            : typeof data.image4 != "string" && claimDb.image4 == ""
             ? await uploadFile(data.image4, "image4")
             : data.image4,
         image5:
-          data.image5 instanceof File && claimDb.image5 != ""
+          typeof data.image5 != "string" && claimDb.image5 != ""
             ? await replaceImage(claimDb.image5, data.image5, "image5")
-            : data.image5 instanceof File && claimDb.image5 == ""
+            : typeof data.image5 != "string" && claimDb.image5 == ""
             ? await uploadFile(data.image5, "image5")
             : data.image5,
         image6:
-          data.image6 instanceof File && claimDb.image6 != ""
+          typeof data.image6 != "string" && claimDb.image6 != ""
             ? await replaceImage(claimDb.image6, data.image6, "image6")
-            : data.image6 instanceof File && claimDb.image6 == ""
+            : typeof data.image1 != "string" && claimDb.image6 == ""
             ? await uploadFile(data.image6, "image6")
             : data.image6,
         image7:
-          data.image7 instanceof File && claimDb.image7 != ""
+          typeof data.image7 != "string" && claimDb.image7 != ""
             ? await replaceImage(claimDb.image7, data.image7, "image7")
-            : data.image7 instanceof File && claimDb.image7 == ""
+            : typeof data.image7 != "string" && claimDb.image7 == ""
             ? await uploadFile(data.image7, "image7")
             : data.image7,
       };
 
-
- 
-
       await Claim.findByIdAndUpdate(
-        data._id,
+        claimDb._id,
         { ...data, res: data.res_id },
         {
           new: false, // return the new document after update
@@ -167,10 +164,9 @@ const PUT = async (req: NextRequest, res: NextResponse) => {
       },
     });
   } catch (err: any) {
-
     return Response.json({
       error: {
-        message: "Заявка не найдена",
+        message: err.message,
         error: err.message,
       },
     });
@@ -261,11 +257,11 @@ const extractImageName = (url: string) => {
   return decodedFileName.split("?alt")[0];
 };
 const replaceImage = async (oldName: any, file: any, folderName: string) => {
-  if (isValidUrl(oldName) && file instanceof File) {
+  if (isValidUrl(oldName) && typeof file != "string") {
     const fileName = extractImageName(oldName);
     await deleteImage(fileName);
   }
-  if (isValidUrl(oldName) && !(file instanceof File)) {
+  if (isValidUrl(oldName) && !(typeof file != "string")) {
     return oldName;
   }
   return await uploadFile(file, folderName);
@@ -277,7 +273,7 @@ const deleteImage = async (imageName: string) => {
   } catch (error) {}
 };
 const uploadFile = async (fileUpload: any, folderName: string) => {
-  if (!(fileUpload instanceof File)) return "";
+  if (!(typeof fileUpload != "string")) return "";
 
   const filesFolderRef = ref(storage, `${folderName}/${Math.random()}`);
   //   fileUpload = await resizeImage1(fileUpload, 800, 600);
