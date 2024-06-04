@@ -470,7 +470,7 @@ export const ClaimEdit = ({ claim: claimDb }: ClaimGetByIdSuccess) => {
               </div>
             </div>
 
-            {/* <div className="col-12 col-md-6">
+            <div className="col-12 col-md-12">
         <div className="form-group">
           <label htmlFor="claim_number">Номер заявки</label>
           <input
@@ -492,7 +492,7 @@ export const ClaimEdit = ({ claim: claimDb }: ClaimGetByIdSuccess) => {
             />
           )}
         </div>
-      </div> */}
+      </div>
           </div>
           <div className="row">
             <div className="col-12 col-md-6">
