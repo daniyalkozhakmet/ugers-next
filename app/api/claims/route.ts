@@ -55,7 +55,7 @@ const POST = async (req: NextApiRequest, res: NextApiResponse) => {
 
 const GET = async (req: NextRequest, res: NextApiResponse) => {
   try {
-    const PAGE_SIZE = 20;
+    const PAGE_SIZE = 100;
     const pageNumber = Number(req.nextUrl.searchParams.get("page")) || 1;
     let totalCount = 0;
     let totalPages = 0;
@@ -103,11 +103,15 @@ const GET = async (req: NextRequest, res: NextApiResponse) => {
           });
         }
         if (params.claim_number) {
+          // Count total matching documents
           totalCount = await Claim.countDocuments({
             res: session.user.res,
             claim_number: params.claim_number,
           });
+
           totalPages = Math.ceil(totalCount / PAGE_SIZE);
+
+          // Find matching documents with pagination
           const claims = await Claim.find({
             res: session.user.res,
             claim_number: params.claim_number,
@@ -128,6 +132,7 @@ const GET = async (req: NextRequest, res: NextApiResponse) => {
             },
           });
         }
+
         if (params.invent_num) {
           totalCount = await Claim.countDocuments({
             res: session.user.res,

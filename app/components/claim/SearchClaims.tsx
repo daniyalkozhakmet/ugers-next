@@ -1,7 +1,5 @@
 "use client";
-import {
-  useLazyGetClaimsQuery,
-} from "@/lib/features/claim/claimActions";
+import { useLazyGetClaimsQuery } from "@/lib/features/claim/claimActions";
 import { claimApi } from "@/lib/features/claim/claimApi";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { useRouter } from "next/navigation";

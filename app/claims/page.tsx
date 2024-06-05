@@ -48,6 +48,7 @@ export default async function Claims() {
   const params: ParamType | null = heads.get("x-params")
     ? JSON.parse(heads.get("x-params") || "")
     : null;
+    
 
   const data = await fetchClaims(params);
 

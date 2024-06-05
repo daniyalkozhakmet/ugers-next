@@ -114,6 +114,7 @@ export const ClaimsTable = ({
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Инвентарный</th>
+                  <th scope="col">Адрес</th>
                   <th scope="col">Номер заявки</th>
                   <th scope="col">Исполнители</th>
                   <th scope="col">РЭС</th>
@@ -129,10 +130,11 @@ export const ClaimsTable = ({
                   <tr key={index}>
                     <th scope="row">
                       {pagination.pageNumber > 1
-                        ? (pagination.pageNumber - 1) * 20 + index + 1
+                        ? (pagination.pageNumber - 1) * 100 + index + 1
                         : index + 1}
                     </th>
                     <th>{claim.invent_num}</th>
+                    <td>{claim.address}</td>
                     <td>{claim.claim_number}</td>
                     <td>{!claim.govern ? "Подрядчик" : "Акимат"}</td>
                     <td>{claim.res.name}</td>

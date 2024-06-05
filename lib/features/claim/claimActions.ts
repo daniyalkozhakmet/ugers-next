@@ -40,11 +40,9 @@ const extendedApi = claimApi.injectEndpoints({
           } else if (params.res) {
             queryString = `?page=${page}&res=${params.res}`;
           }
-          console.log({ queryString });
 
           return queryString;
         }
-        console.log({ queryString: page });
         return page;
       },
       transformResponse: (response: ClaimsGetResponse) => {
@@ -108,5 +106,5 @@ export const {
   useLazyGetClaimsQuery,
   useGetClaimsQuery,
   useUpdateClaimMutation,
-  useDeleteClaimMutation
+  useDeleteClaimMutation,
 } = extendedApi;

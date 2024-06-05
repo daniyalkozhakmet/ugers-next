@@ -161,6 +161,15 @@ function SidebarNavbar() {
                       Свод по Адм.район
                     </Link>
                   </li>
+                  <li className="nav-item">
+                    <Link
+                      href="/export"
+                      className="nav-link text-uppercase"
+                      onClick={handleCloseOffcanvas}
+                    >
+                      Экспорт данных
+                    </Link>
+                  </li>
 
                   <li className="nav-item">
                     <button

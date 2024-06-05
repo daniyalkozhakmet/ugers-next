@@ -799,7 +799,7 @@ export const ClaimEdit = ({ claim: claimDb }: ClaimGetByIdSuccess) => {
                     src={imagePreviewUrl.image4}
                     alt=""
                     className="img-thumbnail js-image-preview"
-                    id="image1"
+                    id="image4"
                     width="200"
                     height="200"
                     style={{
