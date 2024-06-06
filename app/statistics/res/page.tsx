@@ -11,7 +11,8 @@ const fetchStatisticsByRes = async () => {
     const result = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/api/statistics/res`,
       {
-        next: { tags: ["Statistics"] },
+        // next: { tags: ["Statistics"] },
+        next: { revalidate: 3600 },
         headers: Object.fromEntries(headers()),
       }
     );
