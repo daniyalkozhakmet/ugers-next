@@ -144,7 +144,10 @@ export const ClaimsTable = ({
                     <td>{claim.street_type}</td>
                     <td>{claim.date_of_sending}</td>
 
-                    <td className="d-flex justify-content-start align-items-center">
+                    <td
+                      className="d-flex justify-content-start align-items-center"
+                      style={{ height: "100%" }}
+                    >
                       <span className="border border-primary rounded p-1 mx-1 d-flex justify-content-center align-items-center">
                         <FaEye
                           color="blue"
