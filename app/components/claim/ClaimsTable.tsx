@@ -116,6 +116,7 @@ export const ClaimsTable = ({
                   <th scope="col">Инвентарный</th>
                   <th scope="col">Адрес</th>
                   <th scope="col">Номер заявки</th>
+                  <th scope="col">Направление</th>
                   <th scope="col">Исполнители</th>
                   <th scope="col">РЭС</th>
                   <th scope="col">Адм. район</th>
@@ -136,6 +137,7 @@ export const ClaimsTable = ({
                     <th>{claim.invent_num}</th>
                     <td>{claim.address}</td>
                     <td>{claim.claim_number}</td>
+                    <td>{claim.direction}</td>
                     <td>{!claim.govern ? "Подрядчик" : "Акимат"}</td>
                     <td>{claim.res.name}</td>
                     <td>{claim.neighborhood}</td>
