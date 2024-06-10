@@ -122,6 +122,7 @@ export const ClaimsTable = ({
                   <th scope="col">РЭС</th>
                   <th scope="col">Адм. район</th>
                   <th scope="col">Тип улицы</th>
+                  <th scope="col">Исполнен</th>
                   <th scope="col">Дата отп. заявки</th>
 
                   <th scope="col">Действия</th>
