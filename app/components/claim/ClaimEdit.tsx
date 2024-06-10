@@ -4,7 +4,10 @@ import React, { useState } from "react";
 import Alert from "../Alert";
 import { useSession } from "next-auth/react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
-import { useUpdateClaimMutation } from "@/lib/features/claim/claimActions";
+import {
+  resizeImage,
+  useUpdateClaimMutation,
+} from "@/lib/features/claim/claimActions";
 import { revalidateClaims } from "@/app/actions";
 import { useRouter } from "next/navigation";
 import {
@@ -223,12 +226,14 @@ export const ClaimEdit = ({ claim: claimDb }: ClaimGetByIdSuccess) => {
     document.body.scrollTop = 0; // For Safari
     document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
   };
-  const convertClaimTypeToFormData = (claim: ClaimType): FormData => {
+  const convertClaimTypeToFormData = async (
+    claim: ClaimType
+  ): Promise<FormData> => {
     const formData = new FormData();
 
     for (const [key, value] of Object.entries(claim)) {
       if (value instanceof File) {
-        formData.append(key, value);
+        formData.append(key, await resizeImage(value));
       } else if (typeof value === "boolean") {
         formData.append(key, value.toString());
       } else if (typeof value === "string" && !isNaN(Date.parse(value))) {
@@ -269,7 +274,7 @@ export const ClaimEdit = ({ claim: claimDb }: ClaimGetByIdSuccess) => {
     } else {
       if (session) {
         dispatch(loading());
-        const formData1 = convertClaimTypeToFormData(claim);
+        const formData1 = await convertClaimTypeToFormData(claim);
         formData1.append("res_id", claimDb.res._id);
         formData1.append("_id", claimDb._id);
         const { data } = await updateClaim({
@@ -472,28 +477,28 @@ export const ClaimEdit = ({ claim: claimDb }: ClaimGetByIdSuccess) => {
             </div>
 
             <div className="col-12 col-md-12">
-        <div className="form-group">
-          <label htmlFor="claim_number">Номер заявки</label>
-          <input
-            name="claim_number"
-            type="text"
-            className="form-control"
-            id="claim_number"
-            aria-describedby="inventHelp"
-            placeholder="Введите инвентарный номер"
-            value={claim.claim_number}
-            onChange={handleChange}
-            onBlur={handleBlur}
-          />
+              <div className="form-group">
+                <label htmlFor="claim_number">Номер заявки</label>
+                <input
+                  name="claim_number"
+                  type="text"
+                  className="form-control"
+                  id="claim_number"
+                  aria-describedby="inventHelp"
+                  placeholder="Введите инвентарный номер"
+                  value={claim.claim_number}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
 
-          {claimErrors.claim_number && (
-            <Alert
-              className="danger"
-              message={claimErrors.claim_number}
-            />
-          )}
-        </div>
-      </div>
+                {claimErrors.claim_number && (
+                  <Alert
+                    className="danger"
+                    message={claimErrors.claim_number}
+                  />
+                )}
+              </div>
+            </div>
           </div>
           <div className="row">
             <div className="col-12 col-md-6">

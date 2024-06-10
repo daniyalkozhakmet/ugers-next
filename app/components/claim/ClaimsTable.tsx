@@ -19,6 +19,7 @@ import {
   resetClaimsMessages,
 } from "@/lib/features/claim/claimSlice";
 import { revalidateClaims } from "@/app/actions";
+import { ImCross } from "react-icons/im";
 
 export const ClaimsTable = ({
   claims,
@@ -142,6 +143,13 @@ export const ClaimsTable = ({
                     <td>{claim.res.name}</td>
                     <td>{claim.neighborhood}</td>
                     <td>{claim.street_type}</td>
+                    <td>
+                      {claim.date_recovery_ABP != "" ? (
+                        claim.date_recovery_ABP
+                      ) : (
+                        <ImCross color="red" />
+                      )}
+                    </td>
                     <td>{claim.date_of_sending}</td>
 
                     <td

@@ -1,8 +1,4 @@
 import React from "react";
-import { ExportFilter } from "../components/export/ExportFilter";
-import { headers } from "next/headers";
-import { ParamExportType } from "@/middleware";
-import { GET } from "../api/export/route";
 import Link from "next/link";
 
 export default async function Page() {
