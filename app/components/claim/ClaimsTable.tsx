@@ -145,10 +145,10 @@ export const ClaimsTable = ({
                     <td>{claim.neighborhood}</td>
                     <td>{claim.street_type}</td>
                     <td>
-                      {claim.date_recovery_ABP != "" ? (
+                      {claim.date_recovery_ABP ? (
                         claim.date_recovery_ABP
                       ) : (
-                        <ImCross color="red" />
+                        <ImCross color="red" size={20} />
                       )}
                     </td>
                     <td>{claim.date_of_sending}</td>
