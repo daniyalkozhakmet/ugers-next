@@ -97,7 +97,7 @@ export const ClaimEdit = ({ claim: claimDb }: ClaimGetByIdSuccess) => {
     street_type: claimDb.street_type,
     type_of_work: claimDb.type_of_work,
     is_deleted: false,
-    square_restored_area: claimDb.square_restored_area,
+    square_restored_area: claimDb.square_restored_area || "",
     date_of_signing: claimDb.date_of_signing || "",
     image1: claimDb.image1 || "",
     image2: claimDb.image2 || "",
