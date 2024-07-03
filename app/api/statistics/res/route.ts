@@ -2,10 +2,13 @@
 import connect from "@/utils/db";
 import Res from "@/app/models/Res";
 import Claim from "@/app/models/Claim";
-
+import { getServerSession } from "next-auth";
+import { authOptions } from "../../auth/[...nextauth]/route";
 const GET = async () => {
   try {
     await connect();
+    const session = await getServerSession(authOptions);
+
     const dateThreshold = new Date("2023-01-01T00:00:00.000Z");
     let statistics: any = {
       dateThreshold,
