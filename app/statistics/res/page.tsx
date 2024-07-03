@@ -31,7 +31,7 @@ export default async function StatisticsRes() {
 
   const statistics_by_res: StatisticsByResResponse = await data.json();
   return (
-    <ProtectedAdmin>
+    <Protected>
       {statistics_by_res.error ? (
         <Alert message={statistics_by_res.error?.message} className="danger" />
       ) : (
@@ -41,6 +41,6 @@ export default async function StatisticsRes() {
           />
         )
       )}
-    </ProtectedAdmin>
+    </Protected>
   );
 }
