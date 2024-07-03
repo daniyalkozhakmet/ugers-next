@@ -1,12 +1,14 @@
 import { StatisticsByResSuccess } from "@/lib/ts/claim";
 import React from "react";
-
-export const StatisticsByRes = ({
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { getServerSession } from "next-auth";
+export const StatisticsByRes = async ({
   statistics_by_res,
 }: {
   statistics_by_res: StatisticsByResSuccess;
 }) => {
   const by = new Date();
+  const session = await getServerSession(authOptions);
   return (
     <>
       <h1 className="mb-4">Свод по РЭС</h1>
