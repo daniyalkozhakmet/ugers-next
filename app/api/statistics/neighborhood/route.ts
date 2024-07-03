@@ -35,12 +35,15 @@ const GET = async () => {
       for (const neighborhood of neighborhoods) {
         const doneCount = await Claim.countDocuments({
           neighborhood,
-          date_recovery_ABP: { $exists: true },
+          date_recovery_ABP: { $type: "date" },
           date_of_sending: { $gte: dateThreshold },
         });
         const leftCount = await Claim.countDocuments({
           neighborhood,
-          date_recovery_ABP: { $exists: false },
+          $or: [
+            { date_recovery_ABP: { $exists: false } }, // Check if date_recovery_ABP does not exist
+            { date_recovery_ABP: null } // Check if date_recovery_ABP is null
+        ],
           date_of_sending: { $gte: dateThreshold },
         });
         const totalCount = await Claim.countDocuments({
@@ -71,13 +74,16 @@ const GET = async () => {
         const doneCount = await Claim.countDocuments({
           res: res_id,
           neighborhood,
-          date_recovery_ABP: { $exists: true },
+          date_recovery_ABP: { $type: "date" },
           date_of_sending: { $gte: dateThreshold },
         });
         const leftCount = await Claim.countDocuments({
           res: res_id,
           neighborhood,
-          date_recovery_ABP: { $exists: false },
+          $or: [
+            { date_recovery_ABP: { $exists: false } }, // Check if date_recovery_ABP does not exist
+            { date_recovery_ABP: null } // Check if date_recovery_ABP is null
+        ],
           date_of_sending: { $gte: dateThreshold },
         });
         const totalCount = await Claim.countDocuments({

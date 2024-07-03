@@ -14,7 +14,7 @@ const fetchStatisticsByNeighborhood = async () => {
       `${process.env.NEXT_PUBLIC_API_URL}/api/statistics/neighborhood`,
       {
         // next: { tags: ["Statistics"] },
-        next: { revalidate: 3600 },
+        next: { revalidate: 360 },
         headers: Object.fromEntries(headers()),
       }
     );
