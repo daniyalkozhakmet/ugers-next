@@ -54,7 +54,7 @@ function SidebarNavbar() {
       >
         <div className="offcanvas-header">
           <h5 className="offcanvas-title" id="offcanvasNavbarLabel">
-            УРСГ Асфальт
+            УГЭРС Асфальт
           </h5>
           <button
             type="button"
