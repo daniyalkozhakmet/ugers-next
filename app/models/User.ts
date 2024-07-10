@@ -1,6 +1,6 @@
 import mongoose, { Types, Document } from "mongoose";
 import { IRes } from "./Res";
-
+import Res from "./Res";
 const { Schema } = mongoose;
 
 interface IUser extends Document {

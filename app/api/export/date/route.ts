@@ -80,10 +80,12 @@ const GET = async () => {
         [`Кол-во разрытий ${formattedDate} по ${dateToday.getFullYear()}-${
           dateToday.getMonth() + 1
         }-${dateToday.getDate()}`]: res.total,
-        [`Сделано за период ${formattedDate} по ${dateToday.getFullYear()}-${dateToday.getMonth()}-${dateToday.getDate()}`]:
-          res.done,
-        [`Остаток на ${formattedDate} по ${dateToday.getFullYear()}-${dateToday.getMonth()}-${dateToday.getDate()}`]:
-          res.left,
+        [`Сделано за период ${formattedDate} по ${dateToday.getFullYear()}-${
+          dateToday.getMonth() + 1
+        }-${dateToday.getDate()}`]: res.done,
+        [`Остаток на ${formattedDate} по ${dateToday.getFullYear()}-${
+          dateToday.getMonth() + 1
+        }-${dateToday.getDate()}`]: res.left,
         // Add more mappings for other headers as needed
       }));
       const worksheet = XLSX.utils.json_to_sheet(renamedClaims);
