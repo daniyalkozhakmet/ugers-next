@@ -9,17 +9,17 @@ const GET = async () => {
     }).populate({
       path: "res",
     });
-    const usersWithViewerRole = await User.find({
-      role: UserRole.VIEWER,
-    });
-    // Execute both queries concurrently using Promise.all
-    const [usersUser, usersViewer] = await Promise.all([
-      usersWithUserRole,
-      usersWithViewerRole,
-    ]);
+    // const usersWithViewerRole = await User.find({
+    //   role: UserRole.VIEWER,
+    // });
+    // // Execute both queries concurrently using Promise.all
+    // const [usersUser, usersViewer] = await Promise.all([
+    //   usersWithUserRole,
+    //   usersWithViewerRole,
+    // ]);
 
     // Combine or process the results as needed
-    const userData = [...usersUser, ...usersViewer];
+    const userData = usersWithUserRole;
     // const userData = await User.find({
     //   role: { $ne: UserRole.ADMIN },
     // }).populate({
