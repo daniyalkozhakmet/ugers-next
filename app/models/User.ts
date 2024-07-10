@@ -16,7 +16,7 @@ export enum UserRole {
   VIEWER = "viewer",
   SUPER = "super",
 }
-delete mongoose.models.User;
+// delete mongoose.models.User;
 const userSchema = new Schema(
   {
     email: {
