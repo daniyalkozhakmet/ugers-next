@@ -4,9 +4,10 @@ import Res from "@/app/models/Res";
 const GET = async () => {
   try {
     await connect();
-    console.log(Res);
-    
-    const userData = await User.find({ role: UserRole.USER }).populate("res");
+
+    const userData = await User.find({
+      role: { $ne: UserRole.ADMIN },
+    }).populate("res");
 
     return Response.json({ data: { users: userData } });
   } catch (err: any) {

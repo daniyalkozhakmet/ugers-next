@@ -60,7 +60,7 @@ const GET = async () => {
           "Content-Type": "application/vnd.ms-excel",
         },
       });
-    } else if (session?.user.role == "admin") {
+    } else if (session?.user.role == "admin" || session?.user.role == "viewer") {
       const claims = await Claim.find({}).populate("res").lean().exec();
       const renamedClaims = claims.map((claim) => ({
         РЭС: `РЭС ${claim.res.name}`,

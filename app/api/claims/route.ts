@@ -159,7 +159,7 @@ const GET = async (req: NextRequest, res: NextApiResponse) => {
           });
         }
       }
-      if (session?.user.role == "admin") {
+      if (session?.user.role == "admin" || session?.user.role == "viewer") {
         if (params.claim_number != "" && params.invent_num != "") {
           totalCount = await Claim.countDocuments({
             claim_number: params.claim_number,
@@ -331,7 +331,7 @@ const GET = async (req: NextRequest, res: NextApiResponse) => {
       });
     }
 
-    if (session?.user.role == "admin") {
+    if (session?.user.role == "admin" || session?.user.role == "viewer") {
       totalCount = await Claim.countDocuments();
       totalPages = Math.ceil(totalCount / PAGE_SIZE);
       const claims = await Claim.find()

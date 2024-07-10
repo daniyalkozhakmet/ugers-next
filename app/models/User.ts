@@ -1,18 +1,22 @@
-import mongoose, { Types } from "mongoose";
+import mongoose, { Types, Document } from "mongoose";
 import { IRes } from "./Res";
 
 const { Schema } = mongoose;
+
 interface IUser extends Document {
   email: string;
   password: string;
   role: UserRole;
   res?: Types.ObjectId | IRes; // Optional reference to the Res schema
 }
+
 export enum UserRole {
   ADMIN = "admin",
   USER = "user",
+  VIEWER = "viewer",
   SUPER = "super",
 }
+delete mongoose.models.User;
 const userSchema = new Schema(
   {
     email: {
@@ -34,11 +38,12 @@ const userSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: "Res",
       required: function (this: IUser) {
-        return this.role !== UserRole.ADMIN;
+        return this.role !== UserRole.ADMIN && this.role !== UserRole.VIEWER;
       },
-    }, // Required if not admin
+    }, // Required if not admin or viewer
   },
   { timestamps: true }
 );
 
-export default mongoose.models.User || mongoose.model<IUser>("User", userSchema);
+export default mongoose.models.User ||
+  mongoose.model<IUser>("User", userSchema);

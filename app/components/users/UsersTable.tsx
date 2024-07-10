@@ -53,16 +53,19 @@ const UsersTable = ({ data }: { data: UsersGetResponse }) => {
                   <td scope="row">{index + 1}</td>
                   <td scope="row">{user.email}</td>
                   <td scope="row">{user.role}</td>
-                  <td scope="row">РЭС {user.res.name}</td>
+                  <td scope="row">
+                    {user.res?.name ? `РЭС ${user.res?.name}` : "-"}
+                  </td>
                   <td scope="row">
                     <span className="d-flex justify-content-start align-items-center">
-                      <span className="border border-warning rounded p-1 mx-1 d-flex justify-content-center align-items-center">
+                    {user.res?.name && <span className="border border-warning rounded p-1 mx-1 d-flex justify-content-center align-items-center">
                         <MdEdit
                           color="orange"
                           size={23}
                           onClick={() => editHandler(user._id)}
                         />
-                      </span>
+                      </span>}
+                      
                       <span className="border border-danger rounded p-1 mx-1 d-flex justify-content-center align-items-center">
                         <FaTrash
                           color="red"

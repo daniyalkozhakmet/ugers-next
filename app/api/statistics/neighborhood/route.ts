@@ -31,7 +31,7 @@ const GET = async () => {
       "Наурызбайский",
       "Турксибский",
     ];
-    if (session?.user.role == "admin") {
+    if (session?.user.role == "admin" || session?.user.role == "viewer") {
       for (const neighborhood of neighborhoods) {
         const doneCount = await Claim.countDocuments({
           neighborhood,

@@ -13,14 +13,25 @@ const POST = async (req: NextRequest, res: NextResponse) => {
     const data = await req.json();
 
     const { email, password, res } = data;
-
+    console.log({ email, password, res });
     const existingUser = await User.findOne({ email });
-    const resDb = await Res.findById(res);
-    console.log("resDb", resDb);
+
     if (existingUser) {
       return Response.json({ error: { message: "Выберите другую почту" } });
     }
+    if (res == "") {
+      console.log({ email, password, res });
 
+      const hashedPassword = await bcrypt.hash(password, 10);
+      const newUser = new User({
+        email,
+        password: hashedPassword,
+        role: UserRole.VIEWER,
+      });
+      await newUser.save();
+      return Response.json({ data: { message: "Пользователь создана" } });
+    }
+    const resDb = await Res.findById(res);
     const hashedPassword = await bcrypt.hash(password, 10);
     const newUser = new User({
       email,
@@ -32,6 +43,8 @@ const POST = async (req: NextRequest, res: NextResponse) => {
     await newUser.save();
     return Response.json({ data: { message: "Пользователь создана" } });
   } catch (err: any) {
+    console.log(err.message);
+
     return Response.json({
       error: {
         message: "Internal Server Error",

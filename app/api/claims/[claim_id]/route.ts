@@ -60,7 +60,7 @@ const GET = async (req: NextRequest, res: NextResponse) => {
       }
       return Response.json({ data: { claim } });
     }
-    if (session?.user.role == "admin") {
+    if (session?.user.role == "admin" || session?.user.role == "viewer") {
       await connect();
 
       const claim_id = req.url.split("/").pop();

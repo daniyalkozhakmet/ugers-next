@@ -38,10 +38,10 @@ export const UserCreateForm = ({ res }: { res: ResType[] }) => {
     const strongRegex = new RegExp(
       "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{9,})"
     );
-    if (user.res == "") {
-      setPasswordError("Выберите РЭС");
-      return;
-    }
+    // if (user.res == "") {
+    //   setPasswordError("Выберите РЭС");
+    //   return;
+    // }
     if (!strongRegex.test(user.password)) {
       setPasswordError(
         "Пароль должен содержать не менее 9 символов и содержать как минимум одну заглавную букву, одну строчную букву, одну цифру и один специальный символ"

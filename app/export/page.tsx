@@ -1,7 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../api/auth/[...nextauth]/route";
 
 export default async function Page() {
+  const session = await getServerSession(authOptions);
+  console.log(session);
+
   //   const heads = headers();
 
   //   // const pathname = heads.get("next-url");
@@ -19,6 +24,18 @@ export default async function Page() {
       <Link className="btn btn-primary my-2" href="api/export">
         Экспорт
       </Link>
+      {session?.user.role == "admin" && (
+        <>
+          <br />
+          <Link className="btn btn-primary my-2" href="api/export/res">
+            Экспорт Свод
+          </Link>
+          <br />
+          <Link className="btn btn-primary my-2" href="api/export/date">
+            Экспорт Свод по 01.01.2024
+          </Link>
+        </>
+      )}
       {/* {params.by != "" && params.from != "" && (
         <Link href="api/export">Export</Link>
       )} */}

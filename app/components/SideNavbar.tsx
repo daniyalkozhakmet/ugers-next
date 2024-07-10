@@ -101,6 +101,15 @@ function SidebarNavbar() {
                           Создать заявку
                         </Link>
                       </li>
+                      <li className="nav-item">
+                        <Link
+                          href="/statistics/neighborhood"
+                          className="nav-link text-uppercase"
+                          onClick={handleCloseOffcanvas}
+                        >
+                          Свод по Адм.район
+                        </Link>
+                      </li>
                     </>
                   )}
                   {data.user.role == "admin" && (
@@ -150,17 +159,48 @@ function SidebarNavbar() {
                           Свод по РЭС
                         </Link>
                       </li>
+                      <li className="nav-item">
+                        <Link
+                          href="/statistics/res/date"
+                          className="nav-link text-uppercase"
+                          onClick={handleCloseOffcanvas}
+                        >
+                          Свод по РЭС 01.01.2024
+                        </Link>
+                      </li>
                     </>
                   )}
-                  <li className="nav-item">
-                    <Link
-                      href="/statistics/neighborhood"
-                      className="nav-link text-uppercase"
-                      onClick={handleCloseOffcanvas}
-                    >
-                      Свод по Адм.район
-                    </Link>
-                  </li>
+                  {data.user.role == "viewer" && (
+                    <>
+                      <li className="nav-item">
+                        <Link
+                          href="/statistics/neighborhood"
+                          className="nav-link text-uppercase"
+                          onClick={handleCloseOffcanvas}
+                        >
+                          Свод по Адм.район
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link
+                          href="/statistics/res"
+                          className="nav-link text-uppercase"
+                          onClick={handleCloseOffcanvas}
+                        >
+                          Свод по РЭС
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link
+                          href="/statistics/res/date"
+                          className="nav-link text-uppercase"
+                          onClick={handleCloseOffcanvas}
+                        >
+                          Свод по РЭС 01.01.2024
+                        </Link>
+                      </li>
+                    </>
+                  )}
                   <li className="nav-item">
                     <Link
                       href="/export"
@@ -170,7 +210,6 @@ function SidebarNavbar() {
                       Экспорт данных
                     </Link>
                   </li>
-
                   <li className="nav-item">
                     <button
                       className="btn btn-unstyled nav-link text-uppercase"
