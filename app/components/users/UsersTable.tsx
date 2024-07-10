@@ -58,7 +58,7 @@ const UsersTable = ({ data }: { data: UsersGetResponse }) => {
                   </td>
                   <td scope="row">
                     <span className="d-flex justify-content-start align-items-center">
-                    {user.res?.name && <span className="border border-warning rounded p-1 mx-1 d-flex justify-content-center align-items-center">
+                    {user.role=='user' && <span className="border border-warning rounded p-1 mx-1 d-flex justify-content-center align-items-center">
                         <MdEdit
                           color="orange"
                           size={23}
