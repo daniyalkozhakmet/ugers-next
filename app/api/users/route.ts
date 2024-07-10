@@ -7,7 +7,11 @@ const GET = async () => {
 
     const userData = await User.find({
       role: { $ne: UserRole.ADMIN },
-    }).populate("res");
+    }).populate({
+      path: "res",
+      model: "Res",
+      options: { retainNullValues: true }, // Retain null values for missing references
+    });
 
     return Response.json({ data: { users: userData } });
   } catch (err: any) {

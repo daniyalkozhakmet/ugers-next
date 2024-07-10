@@ -3,7 +3,7 @@ export interface IRes extends Document {
   name: string;
 }
 const { Schema } = mongoose;
-delete mongoose.models.Res;
+// delete mongoose.models.Res;
 const resSchema = new Schema(
   {
     name: {
