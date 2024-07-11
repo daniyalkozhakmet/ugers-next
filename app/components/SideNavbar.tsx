@@ -134,6 +134,15 @@ function SidebarNavbar() {
                       </li>
                       <li className="nav-item">
                         <Link
+                          href="/statistics/neighborhood"
+                          className="nav-link text-uppercase"
+                          onClick={handleCloseOffcanvas}
+                        >
+                          Свод по Адм.район
+                        </Link>
+                      </li>
+                      <li className="nav-item">
+                        <Link
                           href="/users"
                           className="nav-link text-uppercase"
                           onClick={handleCloseOffcanvas}
