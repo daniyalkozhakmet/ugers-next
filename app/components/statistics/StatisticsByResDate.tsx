@@ -18,12 +18,12 @@ export const StatisticsByRes = ({
               <th scope="col">
                 Кол-во разрытий{" "}
                 {statistics_by_res.dateThreshold.toString().slice(0, 10)} по{" "}
-                <br /> {by.getFullYear()}-{by.getMonth()}-{by.getDate()}
+                <br /> {by.getFullYear()}-{by.getMonth()+1}-{by.getDate()}
               </th>
               <th scope="col">
                 Сделано за период{" "}
                 {statistics_by_res.dateThreshold.toString().slice(0, 10)} по{" "}
-                <br /> {by.getFullYear()}-{by.getMonth()}-{by.getDate()}{" "}
+                <br /> {by.getFullYear()}-{by.getMonth()+1}-{by.getDate()}{" "}
               </th>
               <th scope="col">
                 Остаток на {by.getFullYear()}-{by.getMonth() + 1}-{by.getDate()}{" "}
