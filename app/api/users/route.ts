@@ -24,7 +24,8 @@ const GET = async () => {
       role: { $ne: UserRole.ADMIN },
     });
 
-    return Response.json({ data: { users: userData } });
+    // return Response.json({ data: { users: userData } });
+    return Response.json({ data: { users: [] } });
   } catch (err: any) {
     return Response.json({
       error: {
